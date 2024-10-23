@@ -8,8 +8,6 @@ def main():
     documents = []
     files = []
     for filename in tqdm(os.listdir("Data")):
-
-        files.append(os.path.splitext(filename)[0])
         doc = {}
         with open(f"Data/{filename}", "r") as f:
             data = json.loads(f.read())
@@ -18,9 +16,14 @@ def main():
         doc["title"] = data["meta_data"]["title"]
         doc["body"] = data["transcription_data"]["text"]
         documents.append(doc)
+        files.append(
+            {
+                "title": data["meta_data"]["title"],
+                "episode_num": os.path.splitext(filename)[0],
+            }
+        )
     idx = lunr(ref="id", fields=("episode_num", "title", "body"), documents=documents)
-    files.sort()
-    files_sorted = sorted(files, key=int)
+    files_sorted = sorted(files, key=lambda x: float(x["episode_num"]))
     return idx, files_sorted
 
 

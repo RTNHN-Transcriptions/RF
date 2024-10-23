@@ -10,11 +10,11 @@ async function populateList() {
   files.forEach(makeEpisode);
 }
 
-function makeEpisode(fileName) {
+function makeEpisode(fileObj) {
   const episode = document.createElement("li")
   const link = document.createElement("a")
-  link.href = "SmartTranscripts/" + fileName  + ".html"
-  link.textContent = fileName
+  link.href = "SmartTranscripts/" + fileObj.episode_num  + ".html"
+  link.textContent = fileObj.episode_num + " - " + fileObj.title
   episode.appendChild(link)
   transcriptsUl.appendChild(episode)
 }
