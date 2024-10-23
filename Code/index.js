@@ -3,14 +3,28 @@ const searchBox = document.getElementById('searchBox');
 
 const baseURL = "https://rtnhn-transcriptions.github.io/RF/"
 
-async function populateList() {
+async function fetchFiles() {
   const response = await fetch(baseURL + 'files.json');
   const json = await response.json();
-  const files = json.files;
+  return json.files;
+}
+
+async function populateList() {
+  const files = await fetchFiles();
   files.forEach(makeEpisode);
 }
 
-function makeEpisode(fileObj) {
+async function getFileObj(episode_num) {
+  const response = await fetch(baseURL + 'files.json');
+  const json = await response.json();
+  return json.files.find(file => file.episode_num === episode_num);
+}
+
+
+async function makeEpisode(fileObj) {
+  if (typeof fileObj === "string") {
+    fileObj = await getFileObj(fileObj);
+  }
   const episode = document.createElement("li")
   const link = document.createElement("a")
   link.href = "SmartTranscripts/" + fileObj.episode_num  + ".html"
