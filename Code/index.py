@@ -15,10 +15,9 @@ def main():
     doc["id"] = os.path.splitext(filename)[0]
     doc["episode_num"] = os.path.splitext(filename)[0]
     doc["title"] = data["meta_data"]["title"]
-    doc["subtitle"] = data["meta_data"]["subtitle"]
     doc["body"] = data["transcription_data"]["text"]
     documents.append(doc)
-  idx = lunr(ref="id", fields=("episode_num", "title", "subtitle", "body"), documents=documents )
+  idx = lunr(ref="id", fields=("episode_num", "title", "body"), documents=documents )
   files.sort()
   return idx, files
     
