@@ -2,7 +2,7 @@
 
 With the SmartTranscripts, the text color will follow along with the audio. Also, you can click on any of the blocks of text and the audio will automatically go to that part. It is super basic and minimalist, but it is more of a proof of concept.
 
-You can also see all the transcriptions here: http://rtnhn-transcribe.github.io/rf/
+You can also see all the transcriptions here: https://rtnhn-transcriptions.github.io/RF/
 
 You can now directly embed the transcript into any html doc. All that you need to do is to add the API js file with 
 
