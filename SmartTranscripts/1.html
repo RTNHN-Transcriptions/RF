@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript Highlight</title>
+    <style>
+        .transcript-section {
+            color: #999999;
+        }
+        .highlight {
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <h1> Reconstructed Faith Trailer </h1>
+    <audio  id="audio" controls>
+        <source src="https://media.southspring.org/wp-content/uploads/2021/10/07143742/Reconstructed-Faith-Trailer_2.mp3" type="audio/mp3">
+    </audio>
+    <div id="transcript">
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="0.0" data-end="8.78"> We all know someone who has deconstructed their faith, right?</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="8.78" data-end="10.66"> Maybe we even have ourselves.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="10.66" data-end="13.26"> Or maybe we're just skeptical about it all.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="13.26" data-end="15.98"> Religion, faith, God.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="15.98" data-end="18.580000000000002"> Regardless, here's what we know.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="18.580000000000002" data-end="20.8"> We all have unanswered questions.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="20.8" data-end="23.36"> We all have unquestioned answers.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="23.36" data-end="25.84"> And every one of us has doubts.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="25.84" data-end="28.18"> But why does it end there?</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="28.18" data-end="33.58"> There are answers to hard-hitting questions, and our faith can be built on something solid</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="33.58" data-end="35.84"> or rebuilt.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="35.84" data-end="38.6"> Join us as we dive into these conversations.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="38.6" data-end="42.24"> We aren't here to stop you from taking things apart brick by brick.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="42.24" data-end="45.2"> We just don't want you to stop there.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="45.2" data-end="47.239999999999995"> This is Reconstructed Faith.</p>
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const audio = document.getElementById('audio'); 
+        const transcriptSections = document.querySelectorAll('.transcript-section');
+
+        function updateTranscriptHighlight() {
+            const currentTime = audio.currentTime; 
+
+            transcriptSections.forEach((section) => {
+                const startTime = parseFloat(section.getAttribute('data-start'));
+                const endTime = parseFloat(section.getAttribute('data-end'));
+
+                if (currentTime >= startTime && currentTime <= endTime) {
+                    section.classList.add('highlight');
+                } else {
+                    section.classList.remove('highlight');
+                }
+            });
+        }
+
+        audio.addEventListener('timeupdate', updateTranscriptHighlight); 
+        });
+
+        function seekToTime(event) {
+        const audio = document.getElementById("audio");
+        audio.currentTime = +event.target.getAttribute('data-start')+.1;
+        audio.play()
+        }
+    </script>
+</body>
+</html>

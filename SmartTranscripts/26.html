@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript Highlight</title>
+    <style>
+        .transcript-section {
+            color: #999999;
+        }
+        .highlight {
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <h1> Reconstructed Faith // Update Post </h1>
+    <audio  id="audio" controls>
+        <source src="https://media.southspring.org/wp-content/uploads/2022/04/04092528/Recon-Faith_What-Is-Update.mp3" type="audio/mp3">
+    </audio>
+    <div id="transcript">
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="0.0" data-end="8.48"> Hello and welcome to the Reconstructed Faith podcast.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="8.48" data-end="13.040000000000001"> My name is Colson Lettner and in the studio with me today is nobody.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="13.040000000000001" data-end="15.540000000000001"> That's right because today's episode is not actually an episode.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="15.540000000000001" data-end="19.8"> It's just a quick update as you probably saw from today's episode title.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="19.8" data-end="24.0"> It's just an update to let you know that we have not canceled the Reconstructed Faith</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="24.0" data-end="25.0"> podcast.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="25.0" data-end="27.48"> No, no, no, never fear.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="27.48" data-end="32.18"> We have just been on a brief hiatus because Chris Legg was on a sabbatical and I was</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="32.18" data-end="37.88"> on a paternity leave and so we are all back in the office now and we are actually going</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="37.88" data-end="43.44"> to meet today, April 4th, to get back at generating some more episodes.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="43.44" data-end="47.96"> And so we're thankful for your patience, thankful for those of you who reached out to let us</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="47.96" data-end="53.64"> know that you were really benefiting from what we were bringing for you guys and we</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="53.64" data-end="57.86"> hope that that will continue to be a great ministry and a great way to equip you guys</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="57.86" data-end="64.46000000000001"> on your journey as you're one, dealing with and wrestling with truth yourself, but also</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="64.46000000000001" data-end="68.88"> helping others, loved ones and family who are dealing with those things as well.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="68.88" data-end="73.32"> So I'm excited for you guys to hear from the Chris's and from some special guests soon.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="73.32" data-end="76.52"> And yeah, you'll be hearing from us in the coming weeks.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="76.52" data-end="77.52"> All right.</p>
+        
+        <p onclick="seekToTime(event)" class="transcript-section" data-start="77.52" data-end="78.52"> Have a great day.</p>
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const audio = document.getElementById('audio'); 
+        const transcriptSections = document.querySelectorAll('.transcript-section');
+
+        function updateTranscriptHighlight() {
+            const currentTime = audio.currentTime; 
+
+            transcriptSections.forEach((section) => {
+                const startTime = parseFloat(section.getAttribute('data-start'));
+                const endTime = parseFloat(section.getAttribute('data-end'));
+
+                if (currentTime >= startTime && currentTime <= endTime) {
+                    section.classList.add('highlight');
+                } else {
+                    section.classList.remove('highlight');
+                }
+            });
+        }
+
+        audio.addEventListener('timeupdate', updateTranscriptHighlight); 
+        });
+
+        function seekToTime(event) {
+        const audio = document.getElementById("audio");
+        audio.currentTime = +event.target.getAttribute('data-start')+.1;
+        audio.play()
+        }
+    </script>
+</body>
+</html>
