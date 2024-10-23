@@ -1,8 +1,10 @@
 const transcriptsUl = document.getElementById("transcripts")
 const searchBox = document.getElementById('searchBox');
 
+const baseURL = "https://rtnhn-transcriptions.github.io/RF/"
+
 async function populateList() {
-  const response = await fetch("https://tmbh-transcribe.github.io/TMBH-Transcribe/files.json");
+  const response = await fetch(baseURL + 'files.json');
   const json = await response.json();
   const files = json.files;
   files.forEach(makeEpisode);
@@ -18,7 +20,7 @@ function makeEpisode(fileName) {
 }
 
 async function fetchIndex() {
-  const response = await fetch('https://tmbh-transcribe.github.io/TMBH-Transcribe/index.json');
+  const response = await fetch(baseURL + 'index.json');
   const indexJson = await response.json();
   return lunr.Index.load(indexJson);
 }
